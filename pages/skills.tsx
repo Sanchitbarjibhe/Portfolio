@@ -6,7 +6,7 @@ import SubHeader from '@/Common/Elements/SubHeader';
 
 
 
-export default function skills() {
+export default function Skills() {
   return (
     <>
       <SubHeader>SKILLS</SubHeader>
