@@ -1,0 +1,22 @@
+{
+    "presets": [
+        "next/babel",
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "18.16.1"
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        [
+            "styled-components",
+            {
+                "ssr": true
+            },
+            "macros"
+        ]
+    ]
+}

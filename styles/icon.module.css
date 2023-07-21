@@ -1,0 +1,11 @@
+.iconContainer {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon {
+  font-size: 50px;
+  color: #007bff;
+}
