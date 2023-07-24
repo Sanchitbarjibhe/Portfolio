@@ -6,7 +6,7 @@ import Image from 'next/image';
 import SubHeader from '@/Common/Elements/SubHeader';
 
 export default function about() {
-  const downloadCvUrl = 'http://localhost:3000/Assets/SanchitBarjibhe.pdf';
+  const downloadCvUrl = 'https://portfolio-sanchitbarjibhe.vercel.app/SanchitBarjibhe.pdf';
 
   const downloadCvEvent = (Url: string) => {
     const fileName = Url.split('/').pop();
