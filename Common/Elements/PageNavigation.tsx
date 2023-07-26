@@ -4,13 +4,14 @@ import { Box, ListItem, ListItemButton, ListItemText } from '@mui/material';
 
 interface SectionButtonProps {
   id: string;
-  children: ReactNode; 
+  children: ReactNode;
+  paddingTop: any;
 }
 
-const PageNavigation: React.FC<SectionButtonProps> = ({ id, children }) => {
+const PageNavigation: React.FC<SectionButtonProps> = ({ id, paddingTop, children }) => {
   return (
     <>
-      <Box sx={{ paddingTop: '65px' }} id={id}>
+      <Box sx={{ paddingTop }} id={id}>
         {children}
       </Box>
     </>

@@ -5,6 +5,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import styled from 'styled-components';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { Link } from 'react-scroll';
 
 
 export default function banner() {
@@ -29,8 +30,8 @@ export default function banner() {
           fontSize: '30%'
         }}>
           <a href="https://www.linkedin.com/in/sanchit-barjibhe-600aba1a7/"><LinkedInIcon sx={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} /></a>
-          <a href="https://www.instagram.com/astubborne/"><TwitterIcon sx={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} /></a>
-          <a href="https://github.com/SanchitDev47"><GitHubIcon sx={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} /></a>
+          <a href="https://www.twitter.com/astubborne/"><TwitterIcon sx={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} /></a>
+          <a href="https://github.com/SanchitBarjibhe"><GitHubIcon sx={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} /></a>
         </Grid>
         <Grid item lg={7.2} md={7} sm={9} xs={12} sx={{
           display: 'flex',
@@ -73,20 +74,26 @@ export default function banner() {
             Highly motiveated desgin and developement producing a quality work
           </Typography>
           <Grid item lg={12} xs={12}>
-            <ContactBtn>Contact Me<SendIcon sx={{
-              fontSize: '20px',
-              display: 'flex',
-              justifyContent: 'flex-end'
-            }} /></ContactBtn>
+            <Link to={"contact"} smooth={true}>
+              <ContactBtn>
+                Contact Me<SendIcon sx={{
+                  fontSize: '20px',
+                  display: 'flex',
+                  justifyContent: 'flex-end'
+                }} />
+              </ContactBtn>
+            </Link>
+
           </Grid>
-        </Grid>
+        </Grid >
 
         {/* Banner Avatar */}
-        <Grid item lg={2.2} md={2} sm={3.5} xs={1} sx={{
+        < Grid item lg={2.2} md={2} sm={3.5} xs={1} sx={{
           display: 'flex',
           flexDirection: { lg: 'row', xs: 'column' },
           flexWrap: 'nowrap'
-        }}>
+        }
+        }>
           {/* <Avatar className={classes.avatar}>
             <Image
               src={myImage}
@@ -96,8 +103,8 @@ export default function banner() {
               quality={100}
             />
           </Avatar> */}
-        </Grid>
-      </Grid>
+        </Grid >
+      </Grid >
     </>
   )
 }

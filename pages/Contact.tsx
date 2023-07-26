@@ -23,51 +23,48 @@ export default function Contact() {
     setValue('email', '');
   };
   return (
-    <Box>
+    <>
       <SubHeader>CONTACT</SubHeader>
-      <Grid container
-        sx={{
-          paddingTop: '50px', paddingBottom: '50px',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          height: '35%',
-          gap: '62px'
-        }}>
+      <Box sx={{ paddingTop: '50px', paddingBottom: '50px', display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-around', gap: { xs: '65px' } }}>
 
-        <Grid item lg={4} sx={{ display: 'flex', flexDirection: 'column', gap: '31px', padding: { lg: 0, xs: '6%' } }}>
-          <Typography sx={{ fontSize: 20, display: 'flex', alignItems: 'center', gap: '25px' }}><PhoneIcon sx={{ height: 24, width: 24, color: '#20C5FA' }} />+91 9850589978</Typography>
-          <Typography sx={{ fontSize: 20, display: 'flex', alignItems: 'center', gap: '25px' }}><LocationOnIcon sx={{ height: 24, width: 24, color: '#20C5FA' }} />Vadodra/Broda, Gujrat</Typography>
-          <Typography sx={{ fontSize: 20, display: 'flex', alignItems: 'center', gap: '25px' }}><MailIcon sx={{ height: 24, width: 24, color: '#20C5FA' }} />sanchitbarjibhe98@gmail.com</Typography>
+        <Grid item lg={4} sx={{ display: 'flex', flexDirection: 'column', gap: '31px' }}>
+          <Typography sx={{ fontSize: 18, display: 'flex', alignItems: 'center', gap: '15px' }}><PhoneIcon sx={{ height: 24, width: 24, color: '#20C5FA' }} />+91 9850589978</Typography>
+          <Typography sx={{ fontSize: 18, display: 'flex', alignItems: 'center', gap: '15px' }}><LocationOnIcon sx={{ height: 24, width: 24, color: '#20C5FA' }} />Vadodra/Broda, Gujrat</Typography>
+          <Typography sx={{ fontSize: 18, display: 'flex', alignItems: 'center', gap: '15px' }}><MailIcon sx={{ height: 24, width: 24, color: '#20C5FA' }} />barjibhe98@gmail.com</Typography>
         </Grid>
 
-        <Grid item lg={5} xs={3} sx={{ display: 'flex', flexDirection: 'column', height: '20%', justifyContent: 'flex-start', gap: '30px', alignItems: { lg: 'flex-end', xs: 'center' } }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: '30px', width: '465px' }}>
-            <Grid>
-              <TextField sx={{ width: '100%', }} InputLabelProps={{ shrink: true }} {...register("visitorName", { required: "First Name is Required" })} id="outlined-basic" name="FirstName" label="First Name" variant="outlined" />
-              {errors.visitorName && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.visitorName.message}`}</p>}
+        <Grid item lg={5} md={5} sm={3} xs={12} sx={{
+          paddingLeft: '2.5rem',
+          paddingRight: '2.5rem',
+          display: 'flex', flexDirection: 'column',
+          gap: '45px', alignItems: { lg: 'flex-end', xs: 'center' }
+        }}>
+
+          <Box sx={{ display: 'flex', width: '100%', gap: '30px' }}>
+            <Grid item lg={3} md={6} sm={10} xs={12}>
+              <TextField InputLabelProps={{ shrink: true }} {...register("visitor", { required: "First Name is Required" })} id="outlined-basic" name="visitor" label="Full Name" variant="outlined" fullWidth />
+              {errors.visitor && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.visitor.message}`}</p>}
             </Grid>
-            <Grid>
-              <TextField sx={{ width: '100%', }} InputLabelProps={{ shrink: true }} {...register("subject", { required: "Subject is Required" })} id="outlined-basic" name="subject" label="Suject" variant="outlined" />
+            <Grid item lg={3} md={6} sm={10} xs={12}>
+              <TextField InputLabelProps={{ shrink: true }} {...register("subject", { required: "Subject is Required" })} id="outlined-basic" name="subject" label="Subject" variant="outlined" fullWidth />
               {errors.subject && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.subject.message}`}</p>}
             </Grid>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            <Grid>
-              <TextField sx={{ width: '100%', }} InputLabelProps={{ shrink: true }} {...register("email", { required: "Email is Required" })} id="outlined-basic" name="email" label="Email" variant="outlined" />
+          <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', gap: '30px' }}>
+            <Grid item lg={3} md={6} sm={3} xs={12}>
+              <TextField InputLabelProps={{ shrink: true }} {...register("email", { required: "Email is Required" })} id="outlined-basic" name="email" label="Email" variant="outlined" fullWidth />
               {errors.email && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.email.message}`}</p>}
             </Grid>
 
-            <Grid>
+            <Grid item lg={3} md={6} sm={6} xs={3}>
               <TextareaAutosize
                 aria-label="empty textarea"
                 placeholder="Message"
                 minRows={3}
                 name='visitorQury'
                 {...register("visitorQury", { required: "Write A Message for inquiry" })}
-                style={{ maxWidth: 466, minWidth: 466, maxHeight: '90px', minHeight: '90px' }}
+                style={{ width: '100%', minWidth: 250, maxHeight: '90px', minHeight: '90px' }}
               />
               {errors.visitorQury && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.visitorQury.message}`}</p>}
             </Grid>
@@ -76,8 +73,8 @@ export default function Contact() {
             <SubmitBtn type="submit" onClick={handleSubmit(onSubmit)}>Submit</SubmitBtn>
           </Box>
         </Grid>
-      </Grid>
-    </Box>
+      </Box >
+    </>
   )
 }
 
