@@ -1,13 +1,9 @@
-import { Box } from '@mui/material';
 import React, { useEffect, useRef, useState, } from 'react';
 import Icon from "@mui/material/Icon"
-import * as Icons from '@mui/icons-material';
-import { animateScroll as scroll } from 'react-scroll';
 
 interface CircularProgressBarProps {
   percentage: number;
   icon: string;
-  // reload: () => void;
 }
 
 const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ percentage, icon, }) => {

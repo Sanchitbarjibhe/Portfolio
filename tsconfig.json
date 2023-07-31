@@ -8,7 +8,7 @@
     ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -37,14 +37,16 @@
       "@/Assets/*": [
         "Assets/*"
       ]
-    }
+    },
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/pages/skills.tsx"
+    "src/pages/skills.tsx",
+    "api/visidata/route.ts"
   ],
   "exclude": [
     "node_modules"
