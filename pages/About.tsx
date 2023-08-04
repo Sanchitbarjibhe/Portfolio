@@ -8,15 +8,15 @@ import SubHeader from '@/Common/Elements/SubHeader';
 export default function about() {
   const downloadCvUrl = 'https://portfolio-sanchitbarjibhe.vercel.app/SanchitBarjibhe.pdf';
 
-  const downloadCvEvent = (Url: string) => {
-    const fileName = Url.split('/').pop();
-    const createTag = document.createElement('a');
-    createTag.href = Url;
-    createTag.setAttribute('download', fileName);
-    document.body.appendChild(createTag)
-    createTag.click();
-    createTag.remove();
-  }
+  // const downloadCvEvent = (Url: string) => {
+  //   const fileName: string = Url.split('/').pop() || '';
+  //   const createTag = document.createElement('a');
+  //   createTag.href = Url;
+  //   createTag.setAttribute('download', fileName);
+  //   document.body.appendChild(createTag)
+  //   createTag.click();
+  //   createTag.remove();
+  // }
   return (
     <Box>
       <SubHeader>ABOUT ME</SubHeader>
@@ -59,7 +59,8 @@ export default function about() {
             </Grid>
           </Grid>
           <Box>
-            <CvBtn onClick={() => downloadCvEvent(downloadCvUrl)}>Download CV <DownloadIcon sx={{ fontSize: '19px' }} /></CvBtn>
+            <CvBtn>Download CV <DownloadIcon sx={{ fontSize: '19px' }} /></CvBtn>
+            {/* <CvBtn onClick={() => downloadCvEvent(downloadCvUrl)}>Download CV <DownloadIcon sx={{ fontSize: '19px' }} /></CvBtn> */}
           </Box>
         </Grid>
       </Grid>

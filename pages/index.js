@@ -8,7 +8,6 @@ import Skills from './Skills';
 import Service from './Service';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
-import Mongodatabase from './Mongodatabase'
 // import Testmonials from './Testmonials';
 
 function index() {
@@ -37,7 +36,6 @@ function index() {
         <PageNavigation paddingTop={'65px'} id={'portfolio'}>
           <Portfolio />
         </PageNavigation>
-        {/* <Mongodatabase /> */}
 
         <PageNavigation paddingTop={'65px'} id={'contact'}>
           <Contact />

@@ -7,11 +7,14 @@ interface CircularProgressBarProps {
 }
 
 const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ percentage, icon, }) => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [progress, setProgress] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
     const context = canvas.getContext('2d');
     const radius = canvas.width / 2.3;
     const lineWidth = 10;
@@ -24,10 +27,15 @@ const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ percentage, i
 
     const animate = () => {
       if (currentAngle < endAngle) {
+        if (!context) {
+          // Unable to get the context, handle the error or return early
+          return;
+        }
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw background circle
         context.beginPath();
+
         context.arc(x, y, radius, 0, Math.PI * 2, false);
         context.fillStyle = 'white';
         context.shadowOffsetX = 5;
@@ -41,7 +49,7 @@ const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ percentage, i
         context.arc(x, y, radius, startAngle, currentAngle, false);
         context.lineWidth = lineWidth;
         context.strokeStyle = '#20C5FA';
-        context.strokeShadow = 'none';
+        context.shadowColor = 'rgba(0.5, 0.5, 0.5, 0.1)';
         context.stroke()
 
         currentAngle += 0.03; // Adjust the animation speed here
