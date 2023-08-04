@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 import PageNavigation from '@/Common/Elements/PageNavigation';
-import About from './About'
 import Banner from './Banner';
+import About from './About'
 import Qualification from './Qualification';
+import Skills from './Skills';
 import Service from './Service';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
-import Skills from './Skills';
+import Mongodatabase from './Mongodatabase'
 // import Testmonials from './Testmonials';
-import { Box } from '@mui/material';
 
 function index() {
   return (
@@ -36,6 +37,7 @@ function index() {
         <PageNavigation paddingTop={'65px'} id={'portfolio'}>
           <Portfolio />
         </PageNavigation>
+        {/* <Mongodatabase /> */}
 
         <PageNavigation paddingTop={'65px'} id={'contact'}>
           <Contact />

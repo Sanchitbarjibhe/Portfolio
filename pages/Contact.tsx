@@ -1,27 +1,67 @@
-import { Grid, TextareaAutosize, TextField, Typography } from '@mui/material'
+import { Alert, Button, Grid, Snackbar, TextareaAutosize, TextField, Typography } from '@mui/material'
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MailIcon from '@mui/icons-material/Mail';
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import SubHeader from '@/Common/Elements/SubHeader';
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function Contact() {
+  const [contactData, setContactData] = useState({});
+  const [Message, setMessage] = useState('');
+  const [successToastOpen, setSuccessToastOpen] = useState(false);
+  const [warningToastOpen, setWarningToastOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(false);
   const {
     register,
     formState: { errors },
     handleSubmit,
     setValue,
-    reset,
-  } = useForm<any>({});
+  } = useForm<FormValues>({});
 
-  const onSubmit = (VisitorContactData: Object) => {
-    setValue('visitorname', '');
-    setValue('subject', '');
+  type FormValues = {
+    name: string;
+    subject: string;
+    email: string;
+    messagetext: string;
+
+  }
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const newData = await response.json();
+        console.log(`New data created: ${JSON.stringify(newData)}`);
+        setSuccessToastOpen(true);
+      } else {
+        const errorData = await response.json();
+        setMessage(`Error: ${errorData.error}`);
+        setWarningToastOpen(true)
+      }
+    } catch (error) {
+      setMessage('Error occurred while creating data.');
+      setWarningToastOpen(true)
+    } finally {
+      setLoading(true);
+    }
+    setValue('name', '');
     setValue('email', '');
+    setValue('subject', '');
+    setValue('messagetext', '');
   };
+
   return (
     <>
       <SubHeader>CONTACT</SubHeader>
@@ -42,8 +82,8 @@ export default function Contact() {
 
           <Box sx={{ display: 'flex', width: '100%', gap: '30px' }}>
             <Grid item lg={3} md={6} sm={10} xs={12}>
-              <TextField InputLabelProps={{ shrink: true }} {...register("visitor", { required: "First Name is Required" })} id="outlined-basic" name="visitor" label="Full Name" variant="outlined" fullWidth />
-              {errors.visitor && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.visitor.message}`}</p>}
+              <TextField InputLabelProps={{ shrink: true }} {...register("name", { required: "Name is Required" })} id="outlined-basic" name="name" label="Full Name" variant="outlined" fullWidth />
+              {errors.name && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.name.message}`}</p>}
             </Grid>
             <Grid item lg={3} md={6} sm={10} xs={12}>
               <TextField InputLabelProps={{ shrink: true }} {...register("subject", { required: "Subject is Required" })} id="outlined-basic" name="subject" label="Subject" variant="outlined" fullWidth />
@@ -62,18 +102,47 @@ export default function Contact() {
                 aria-label="empty textarea"
                 placeholder="Message"
                 minRows={3}
-                name='visitorQury'
-                {...register("visitorQury", { required: "Write A Message for inquiry" })}
+                {...register("messagetext", { required: "Write A Message for messagetext" })}
                 style={{ width: '100%', minWidth: 250, maxHeight: '90px', minHeight: '90px' }}
               />
-              {errors.visitorQury && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.visitorQury.message}`}</p>}
+              {errors.messagetext && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.messagetext.message}`}</p>}
             </Grid>
           </Box>
-          <Box>
-            <SubmitBtn type="submit" onClick={handleSubmit(onSubmit)}>Submit</SubmitBtn>
-          </Box>
+          {/* <Box> */}
+          <SubmitBtn disabled={loading} type="submit" onClick={handleSubmit(onSubmit)}>Submit</SubmitBtn>
+          {/* </Box> */}
         </Grid>
-      </Box >
+      </Box>
+
+      <React.Fragment>
+        <Snackbar
+          open={successToastOpen}
+          autoHideDuration={3000}
+          onClose={() => setSuccessToastOpen(false)}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+        >
+          <Alert onClose={() => setSuccessToastOpen(false)} severity="success" sx={{ width: '100%' }}>
+            Message successfully Sent
+          </Alert>
+        </Snackbar>
+
+        <Snackbar
+          open={warningToastOpen}
+          autoHideDuration={3000}
+          onClose={() => setWarningToastOpen(false)}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+        >
+          <Alert onClose={() => setWarningToastOpen(false)} severity="warning" sx={{ width: '100%' }}>
+            something wents wrong
+          </Alert>
+        </Snackbar>
+      </React.Fragment>
     </>
   )
 }
@@ -88,10 +157,10 @@ const SubmitBtn = styled.button`
   font-size: 16px;
   font-weight: 600;
   align-items: center;
-  height: 53px;
+  height: 49px;
   padding: 0;
   justify-content: space-evenly;
-  width: 156px;
+  width: 117px;
   box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   &:hover{
   }
