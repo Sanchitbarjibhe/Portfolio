@@ -165,3 +165,39 @@ export const SkillsCircle = [
     icon: <FontAwesomeIcon icon={faNode} style={{ color: "#20C5FA", height: '50px' }} />
   },
 ]
+
+
+export const FooterLinks = [
+  {
+    header: 'Web Links',
+    links: [
+      { subtitle: 'Contact', href: 'https://www.example1.com' },
+      { subtitle: 'Portfolio', href: 'https://www.example2.com' },
+      { subtitle: 'Blogs', href: 'https://medium.com/@barjibhe99' },
+    ],
+  },
+  {
+    header: 'Works',
+    links: [
+      { subtitle: 'Figma', href: 'https://www.figma.com/files/recents-and-sharing/recently-viewed?fuid=1082011251689625079' },
+      { subtitle: 'Github', href: 'https://github.com/Sanchitbarjibhe' },
+      { subtitle: 'Youtube', href: 'https://www.youtube.com/channel/UCHQS8ubdsVbx41IeNRYP-Rg' },
+    ],
+  },
+  {
+    header: 'Certification',
+    links: [
+      { subtitle: 'Web Dev Bootcamp 2022 ', href: 'https://www.udemy.com/certificate/UC-194b2154-4b1d-4f54-99da-f39f2dd349b7/' },
+      { subtitle: 'MERN Bootcamp 2023 ', href: 'https://www.udemy.com/certificate/UC-e04625b0-df28-44e8-bb6e-26003562e77a/' },
+      { subtitle: 'JavaScript DSA', href: 'https://www.freecodecamp.org/certification/fccb5b649d7-82aa-47e7-a819-c5ee11c6317e/javascript-algorithms-and-data-structures' },
+      { subtitle: 'Responsive Web Design', href: 'https://www.freecodecamp.org/certification/fccb5b649d7-82aa-47e7-a819-c5ee11c6317e/responsive-web-design' },
+    ],
+  },
+  {
+    header: 'Community',
+    links: [
+      { subtitle: 'Link 1 ', href: 'https://www.example3.com' },
+    ],
+  },
+];
+

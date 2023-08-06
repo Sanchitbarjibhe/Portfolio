@@ -46,7 +46,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/pages/skills.tsx",
-    "api/visidata/route.ts"
+    "api/visidata/route.ts",
+    "Common/Elements/CircularIntegrationtjsx"
   ],
   "exclude": [
     "node_modules"

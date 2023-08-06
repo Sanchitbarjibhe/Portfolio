@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import SubHeader from '@/Common/Elements/SubHeader';
 import { SubmitHandler, useForm } from "react-hook-form";
+// import CircularIntegration from '@/Common/Elements/CircularIntegration';
 
 export default function Contact() {
   const [contactData, setContactData] = useState({});
@@ -108,9 +109,7 @@ export default function Contact() {
               {errors.messagetext && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.messagetext.message}`}</p>}
             </Grid>
           </Box>
-          {/* <Box> */}
           <SubmitBtn disabled={loading} type="submit" onClick={handleSubmit(onSubmit)}>Submit</SubmitBtn>
-          {/* </Box> */}
         </Grid>
       </Box>
 
