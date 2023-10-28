@@ -76,7 +76,7 @@ export default function banner() {
           <Grid item lg={12} xs={12}>
             <Link to={"contact"} smooth={true}>
               <ContactBtn>
-                Contact Me<SendIcon sx={{
+                Hire Me<SendIcon sx={{
                   fontSize: '20px',
                   display: 'flex',
                   justifyContent: 'flex-end'

@@ -28,6 +28,8 @@ export default function Contact() {
     subject: string;
     email: string;
     messagetext: string;
+    phonenumber: string;
+    oraganization: string;
 
   }
 
@@ -44,7 +46,7 @@ export default function Contact() {
 
       if (response.ok) {
         const newData = await response.json();
-        console.log(`New data created: ${JSON.stringify(newData)}`);
+        console.log(`Your Request sent Successfully`);
         setSuccessToastOpen(true);
       } else {
         const errorData = await response.json();
@@ -58,6 +60,8 @@ export default function Contact() {
       setLoading(true);
     }
     setValue('name', '');
+    setValue('phonenumber', '');
+    setValue('oraganization', '');
     setValue('email', '');
     setValue('subject', '');
     setValue('messagetext', '');
@@ -89,6 +93,17 @@ export default function Contact() {
             <Grid item lg={3} md={6} sm={10} xs={12}>
               <TextField InputLabelProps={{ shrink: true }} {...register("subject", { required: "Subject is Required" })} id="outlined-basic" name="subject" label="Subject" variant="outlined" fullWidth />
               {errors.subject && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.subject.message}`}</p>}
+            </Grid>
+          </Box>
+
+          <Box sx={{ display: 'flex', width: '100%', gap: '30px' }}>
+            <Grid item lg={3} md={6} sm={10} xs={12}>
+              <TextField InputLabelProps={{ shrink: true }} {...register("phonenumber", { required: "Name is Required" })} id="outlined-basic" name="name" label="Full Name" variant="outlined" fullWidth />
+              {errors.phonenumber && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.phonenumber.message}`}</p>}
+            </Grid>
+            <Grid item lg={3} md={6} sm={10} xs={12}>
+              <TextField InputLabelProps={{ shrink: true }} {...register("oraganization", { required: "Subject is Required" })} id="outlined-basic" name="subject" label="Subject" variant="outlined" fullWidth />
+              {errors.oraganization && <p role="alert" style={{ margin: '0px', paddingTop: '7px', color: "red" }}>{`${errors.oraganization.message}`}</p>}
             </Grid>
           </Box>
 
