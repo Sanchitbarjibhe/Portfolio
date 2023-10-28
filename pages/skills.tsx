@@ -1,7 +1,6 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { SkillsCircle } from '@/src/constants';
 import CircularProgressBar from '@/Common/Elements/CircularProgressBar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SubHeader from '@/Common/Elements/SubHeader';
 
 

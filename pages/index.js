@@ -1,43 +1,45 @@
 import { useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 import PageNavigation from '@/Common/Elements/PageNavigation';
-import About from './About'
 import Banner from './Banner';
+import About from './About'
 import Qualification from './Qualification';
+import Skills from './Skills';
 import Service from './Service';
 import Portfolio from './Portfolio';
 import Contact from './Contact';
-import Skills from './Skills';
 // import Testmonials from './Testmonials';
-import { Box } from '@mui/material';
 
 function index() {
   return (
     <Box sx={{ width: '100%' }}>
-      <Banner />
+      <PageNavigation id={'banner'}>
+        <Banner />
+      </PageNavigation>
       <Box>
-        <PageNavigation id={'about'}>
+        <PageNavigation paddingTop={'65px'} id={'about'}>
           <About />
         </PageNavigation>
 
-        <PageNavigation id={'qualification'}>
+        <PageNavigation paddingTop={'65px'} id={'qualification'}>
           <Qualification />
         </PageNavigation>
 
-        <PageNavigation id={'skills'}>
+        <PageNavigation paddingTop={'65px'} id={'skills'}>
           <Skills />
         </PageNavigation>
 
-        <PageNavigation id={'service'}>
+        <PageNavigation paddingTop={'65px'} id={'service'}>
           <Service />
         </PageNavigation>
 
-        <PageNavigation id={'portfolio'}>
+        <PageNavigation paddingTop={'65px'} id={'portfolio'}>
           <Portfolio />
         </PageNavigation>
 
-        {/* <PageNavigation id={'contact'}>
+        <PageNavigation paddingTop={'65px'} id={'contact'}>
           <Contact />
-        </PageNavigation> */}
+        </PageNavigation>
       </Box>
     </Box>
   )

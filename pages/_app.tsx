@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import ScrollButton from '@/Common/Elements/ScrollToTop'
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <AppLayout>
         <Component {...pageProps} />
+        <Analytics />
         <ScrollButton />
       </AppLayout>
     </>
